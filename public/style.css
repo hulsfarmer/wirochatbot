@@ -415,6 +415,7 @@ body {
 @media (max-width: 480px) {
     .header {
         padding: 10px;
+        min-height: 60px;
     }
     
     .logo h1 {
@@ -432,30 +433,73 @@ body {
     .chat-messages {
         padding: 10px;
         padding-bottom: 90px;
+        /* 챗봇 특성: 빠른 스크롤 */
+        scroll-behavior: smooth;
     }
     
     .message-content {
         max-width: 90%;
         padding: 12px 16px;
+        /* 챗봇 특성: 긴 메시지 지원 */
+        word-break: break-word;
+        line-height: 1.5;
     }
     
     .chat-input-container {
         padding: 8px;
+        /* 챗봇 특성: 키보드 위에 고정 */
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        border-top: 1px solid #e9ecef;
     }
     
     .input-wrapper {
         padding: 6px 10px;
+        /* 챗봇 특성: 빠른 입력 */
+        border-radius: 20px;
+        background: #f8f9fa;
     }
     
     .voice-btn, .send-btn {
-        width: 32px;
-        height: 32px;
-        font-size: 0.8rem;
+        width: 40px; /* 챗봇 특성: 터치하기 쉽게 */
+        height: 40px;
+        font-size: 1rem;
+        /* 챗봇 특성: 터치 피드백 */
+        -webkit-tap-highlight-color: transparent;
     }
     
     #messageInput {
-        font-size: 0.85rem;
-        max-height: 70px;
+        font-size: 0.9rem; /* 챗봇 특성: 읽기 쉬운 크기 */
+        max-height: 80px;
+        /* 챗봇 특성: 빠른 타이핑 */
+        line-height: 1.4;
+    }
+    
+    /* 챗봇 특성: 터치 최적화 */
+    .message {
+        margin-bottom: 15px;
+    }
+    
+    .message-avatar {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+    
+    /* 챗봇 특성: 음성 상태 표시 */
+    .voice-status {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        margin-top: 5px;
+    }
+    
+    /* 챗봇 특성: 타이핑 표시기 */
+    .typing-indicator {
+        padding: 10px 15px;
+        font-size: 0.8rem;
     }
 }
 

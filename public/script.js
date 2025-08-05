@@ -244,6 +244,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 입력 필드 높이 초기화
     adjustTextareaHeight();
+    
+    // 챗봇 특성: 모바일 최적화
+    optimizeForMobile();
 });
 
 // 페이지 가시성 변경 시 포커스 복원
@@ -267,4 +270,39 @@ if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
             }
         }
     }, { once: true });
+}
+
+// 챗봇 특성: 모바일 최적화
+function optimizeForMobile() {
+    // 모바일 감지
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+        // 챗봇 특성: 터치 최적화
+        document.body.style.touchAction = 'manipulation';
+        
+        // 챗봇 특성: 키보드 최적화
+        messageInput.addEventListener('focus', () => {
+            // 키보드가 올라올 때 입력창이 가려지지 않도록
+            setTimeout(() => {
+                messageInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 300);
+        });
+        
+        // 챗봇 특성: 빠른 스크롤
+        chatMessages.style.scrollBehavior = 'smooth';
+        
+        // 챗봇 특성: 터치 피드백
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(button => {
+            button.addEventListener('touchstart', () => {
+                button.style.transform = 'scale(0.95)';
+            });
+            button.addEventListener('touchend', () => {
+                button.style.transform = 'scale(1)';
+            });
+        });
+        
+        console.log('모바일 최적화 적용됨');
+    }
 } 
